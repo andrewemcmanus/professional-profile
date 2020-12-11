@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import './App.css';
+import Home from './components/Home';
+import Contact from './components/Contact';
+import About from './components/About';
+import Projects from './components/Projects';
+import NavBar from './components/NavBar';
 
 function App() {
+
+  const projectList = [
+    { name: 'variation', id: 1},
+    { name: 'spotifyaudiomotion', id: 2},
+    { name: 'neurosonics', id: 5}
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+      <NavBar />
+      <Route path="/" exact component={Home} />
+      <Route path="/projects" component={Projects} />
+      <Route path="/contact" component={Contact} />
+      </div>
+    </BrowserRouter>
   );
 }
 
